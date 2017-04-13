@@ -131,8 +131,9 @@ describe('models/network', () => {
         });
       }
 
-      // 19 longs and 9 shorts
-      expect(network.path('0', '199')).to.have.length(19 + 9);
+      const path = network.path('0', '199');
+      expect(path.filter(hop => hop.description === 'long')).to.have.length(19);
+      expect(path.filter(hop => hop.description === 'short')).to.have.length(9);
     });
   });
 });
