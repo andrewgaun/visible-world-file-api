@@ -16,11 +16,9 @@ export default function errorHandler(err, req, res, next) {
   res.status(httpErr.status_code);
 
   const json = {
-    errors: [{
-      status: httpErr.status_code,
-      title: err.name,
-      detail: httpErr.message,
-    }],
+    status: httpErr.status_code,
+    title: err.name,
+    detail: httpErr.message,
   };
 
   return res.json(json);

@@ -14,14 +14,14 @@ app.get('/hosts', (req, res) => {
 app.post('/host', (req, res) => {
   network.addHost(req.body);
   res.json({
-    status: 'added',
+    status: '200',
   });
 });
 
 app.post('/link', (req, res) => {
   network.addLink(req.body);
   res.json({
-    status: 'added',
+    status: '200',
   });
 });
 
