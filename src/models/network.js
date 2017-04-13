@@ -104,6 +104,7 @@ const Network = function Network() {
       return [];
     }
 
+    // Starting at the target work back to the source
     const route = [];
     let current = target;
     while (current !== source) {

@@ -108,5 +108,31 @@ describe('models/network', () => {
       ]);
       expect(network.path('A', 'F')).to.have.length(0);
     });
+    it('200 host example', () => {
+      for (let i = 0; i < 200; i += 1) {
+        network.addHost({ name: `${i}` });
+      }
+
+      for (let i = 1; i < 200; i += 1) {
+        network.addLink({
+          from: `${i - 1}`,
+          to: `${i}`,
+          description: 'short',
+        });
+      }
+
+      expect(network.path('0', '199')).to.have.length(199);
+
+      for (let i = 10; i < 200; i += 10) {
+        network.addLink({
+          from: `${i - 10}`,
+          to: `${i}`,
+          description: 'long',
+        });
+      }
+
+      // 19 longs and 9 shorts
+      expect(network.path('0', '199')).to.have.length(19 + 9);
+    });
   });
 });
